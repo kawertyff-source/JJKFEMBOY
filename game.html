@@ -2,19 +2,23 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CPU Fighter - เกม</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/pixel.css">
-    <link rel="stylesheet" href="css/mobile.css"> <!-- เพิ่มไฟล์ใหม่ -->
+    <link rel="stylesheet" href="css/mobile.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js"></script>
 </head>
-<body>
+<body class="pixel-bg">
     <div class="game-container">
         <!-- ส่วนหัวแสดงข้อมูลผู้เล่น -->
         <div class="player-header">
-            <span id="player-name"></span>
+            <span id="player-name">กำลังโหลด...</span>
             <span>💰 <span id="bobux">0</span></span>
-            <span>🎰 สปิน: <span id="spins">3</span></span>
+            <span>🎰 <span id="spins">0</span></span>
         </div>
 
         <!-- แท็บเมนู -->
@@ -25,12 +29,15 @@
             <button class="tab-btn" data-tab="quests">เควส</button>
         </div>
 
-        <!-- ส่วนแสดงสไตล์ (ตามภาพ IMG_4238) -->
+        <!-- แท็บ: สไตล์ของฉัน -->
         <div id="styles-tab" class="tab-content active">
-            <div class="style-grid" id="style-list"></div>
+            <div class="style-grid" id="style-list">
+                <!-- จะถูกเติมด้วย JavaScript -->
+                <p class="text-gold">กำลังโหลดสไตล์...</p>
+            </div>
         </div>
 
-        <!-- ส่วนกาชา -->
+        <!-- แท็บ: กาชา -->
         <div id="gacha-tab" class="tab-content">
             <div class="gacha-machine">
                 <div class="gacha-stats">
@@ -41,15 +48,15 @@
                     <span>✨ SHINY (0.015%)</span>
                 </div>
                 <div class="spin-controls">
-                    <span>สปินคงเหลือ: <span id="spins-count">3</span></span>
-                    <span>Pity: <span id="pity-count">0/100</span></span>
-                    <button id="spin-btn">🎲 หมุน!</button>
+                    <span>🎲 สปิน: <span id="spins-count">3</span></span>
+                    <span>⏳ Pity: <span id="pity-count">0/100</span></span>
+                    <button id="spin-btn">หมุน!</button>
                 </div>
                 <div id="spin-result"></div>
             </div>
         </div>
 
-        <!-- ส่วน VS (ต่อสู้) -->
+        <!-- แท็บ: VS (ต่อสู้) -->
         <div id="vs-tab" class="tab-content">
             <canvas id="fight-canvas" width="800" height="400"></canvas>
             <div class="fight-controls">
@@ -60,12 +67,32 @@
             </div>
         </div>
 
-        <!-- ส่วนเควส -->
+        <!-- แท็บ: เควส -->
         <div id="quests-tab" class="tab-content">
-            <ul id="quest-list"></ul>
+            <ul id="quest-list">
+                <!-- จะถูกเติมด้วย JavaScript -->
+                <li>กำลังโหลดเควส...</li>
+            </ul>
         </div>
     </div>
 
-    <script type="module" src="js/game.js"></script>
+    <!-- Firebase Config (เหมือนเดิม) -->
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDJ4ILoZnzgXORGfII6Iyd-ORxHu4-j2QE",
+            authDomain: "newqwe-5b6f7.firebaseapp.com",
+            databaseURL: "https://newqwe-5b6f7-default-rtdb.firebaseio.com",
+            projectId: "newqwe-5b6f7",
+            storageBucket: "newqwe-5b6f7.firebasestorage.app",
+            messagingSenderId: "11942471734",
+            appId: "1:11942471734:web:44747434a2551c2c995097",
+            measurementId: "G-ZLDHN2LVS8"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.database();
+    </script>
+    <!-- ไฟล์ JavaScript ของเกม -->
+    <script src="js/game.js"></script>
 </body>
 </html>
