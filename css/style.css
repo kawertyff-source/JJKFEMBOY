@@ -1,57 +1,30 @@
+/* ===== CSS RESET ===== */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
+/* ===== FONTS ===== */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* ===== GLOBAL STYLES ===== */
 body {
     font-family: 'Press Start 2P', cursive, sans-serif;
-    background: #1a1a2e;
+    background: #0a0a0f;
     color: #fff;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
 }
 
 .pixel-bg {
-    background: repeating-linear-gradient(0deg, #0f0f1f, #0f0f1f 2px, #1a1a2e 2px, #1a1a2e 4px);
+    background: repeating-linear-gradient(0deg, 
+        #0f0f1f 0px, #0f0f1f 2px, 
+        #1a1a2e 2px, #1a1a2e 4px);
+    min-height: 100vh;
 }
 
-.login-container {
-    max-width: 400px;
-    margin: 100px auto;
-    padding: 20px;
-    background: rgba(0,0,0,0.7);
-    border: 4px solid #ffd700;
-    box-shadow: 0 0 20px #ffd700;
-}
-
-.pixel-title {
-    font-size: 24px;
-    text-align: center;
-    color: #ffd700;
-    text-shadow: 3px 3px 0 #b8860b;
-}
-
-input, button {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    font-family: inherit;
-    border: 2px solid #ffd700;
-    background: #000;
-    color: #fff;
-}
-
-button {
-    background: #ffd700;
-    color: #000;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-button:hover {
-    background: #b8860b;
-}
-
-/* ปรับปรุงหน้า Login/Register */
+/* ===== LOGIN / AUTH PAGE ===== */
 .auth-container {
     display: flex;
     justify-content: center;
@@ -61,88 +34,672 @@ button:hover {
 }
 
 .auth-box {
-    background: rgba(0,0,0,0.85);
+    background: rgba(0, 0, 0, 0.9);
     border: 4px solid #ffd700;
     padding: 30px 25px;
     width: 100%;
-    max-width: 400px;
+    max-width: 420px;
     box-shadow: 0 0 30px #ffd700, inset 0 0 10px #ffd700;
-    border-radius: 10px; /* เพิ่มความโค้งมนเล็กน้อย */
+    border-radius: 12px;
+    backdrop-filter: blur(2px);
 }
 
-.auth-toggle {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 25px;
-}
-
-.toggle-btn {
-    flex: 1;
-    padding: 12px 5px;
-    background: #222;
-    border: 2px solid #ffd700;
-    color: #ffd700;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s;
-    border-radius: 5px;
-}
-
-.toggle-btn.active {
-    background: #ffd700;
-    color: #000;
-    border-color: #fff;
-}
-
-.auth-form {
-    display: none;
-}
-
-.auth-form.active {
-    display: block;
-}
-
-.auth-message {
-    margin-top: 20px;
-    padding: 10px;
+.pixel-title {
+    font-size: 24px;
     text-align: center;
-    color: #ff6b6b;
-    font-size: 14px;
-    min-height: 40px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 5px;
+    color: #ffd700;
+    text-shadow: 4px 4px 0 #8b6b1c, 6px 6px 0 #000;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
 }
 
-/* ปรับ input และ button ให้สวยขึ้น */
-.auth-form input {
+.auth-subtitle {
+    text-align: center;
+    color: #ccc;
+    font-size: 14px;
+    margin: 0 0 25px 0;
+    border-bottom: 2px solid #ffd700;
+    padding-bottom: 10px;
+}
+
+/* Social buttons */
+.social-btn {
     width: 100%;
-    padding: 14px 12px;
-    margin: 12px 0;
-    font-family: 'Press Start 2P', cursive, sans-serif;
+    padding: 16px 12px;
+    margin: 10px 0;
     border: 2px solid #ffd700;
     background: #111;
     color: #fff;
+    font-family: 'Press Start 2P', cursive, sans-serif;
     font-size: 14px;
-    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+    box-shadow: 0 4px 0 #8b6b1c;
 }
 
-.auth-form button {
-    width: 100%;
-    padding: 14px;
-    margin: 20px 0 10px;
+.social-btn img {
+    width: 22px;
+    height: 22px;
+    filter: brightness(0) invert(1); /* ทำไอคอนให้ขาว */
+}
+
+.social-btn.google:hover {
+    background: #db4437;
+    border-color: #fff;
+    box-shadow: 0 4px 0 #a13026;
+    transform: translateY(-2px);
+}
+
+.social-btn.apple:hover {
+    background: #000;
+    border-color: #fff;
+    box-shadow: 0 4px 0 #333;
+    transform: translateY(-2px);
+}
+
+.social-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #8b6b1c;
+}
+
+/* Divider */
+.divider {
+    text-align: center;
+    color: #aaa;
+    margin: 20px 0;
+    position: relative;
+    font-size: 12px;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 35%;
+    height: 2px;
+    background: #ffd700;
+    opacity: 0.5;
+}
+
+.divider::before { left: 0; }
+.divider::after { right: 0; }
+
+/* Email form */
+.email-form {
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.email-form input {
+    padding: 16px 12px;
+    background: #111;
+    border: 2px solid #ffd700;
+    color: #fff;
     font-family: 'Press Start 2P', cursive, sans-serif;
+    font-size: 14px;
+    border-radius: 6px;
+    outline: none;
+}
+
+.email-form input:focus {
+    border-color: #fff;
+    box-shadow: 0 0 10px #ffd700;
+}
+
+.email-btn {
+    padding: 16px;
     background: #ffd700;
     color: #000;
     border: none;
-    font-size: 16px;
+    font-family: 'Press Start 2P', cursive, sans-serif;
     font-weight: bold;
+    font-size: 16px;
     cursor: pointer;
-    border-radius: 5px;
-    transition: 0.3s;
+    border-radius: 6px;
+    box-shadow: 0 4px 0 #b8860b;
+    transition: 0.2s;
 }
 
-.auth-form button:hover {
-    background: #b8860b;
+.email-btn:hover {
+    background: #f0c400;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #b8860b;
+}
+
+.email-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #b8860b;
+}
+
+/* Text button (like "ใช้อีเมล") */
+.text-btn {
+    background: none;
+    border: none;
+    color: #ffd700;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-top: 15px;
+    font-size: 12px;
+    font-family: inherit;
+    width: 100%;
+    text-align: center;
+}
+
+.text-btn:hover {
+    color: #fff;
+}
+
+/* Auth message */
+.auth-message {
+    margin-top: 20px;
+    padding: 12px;
+    text-align: center;
+    font-size: 11px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 6px;
+    border-left: 4px solid #ff6b6b;
+    min-height: 40px;
+}
+
+/* Loading spinner */
+.loading-spinner {
+    border: 4px solid #ffd700;
+    border-top: 4px solid transparent;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 20px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===== GAME PAGE (common) ===== */
+.game-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000000cc;
+    border: 3px solid #ffd700;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    text-shadow: 2px 2px 0 #000;
+    box-shadow: 0 0 15px #ffd700;
+}
+
+.player-header span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 12px 20px;
+    background: #222;
+    border: 2px solid #ffd700;
+    color: #ffd700;
+    font-family: 'Press Start 2P', cursive, sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+    flex: 1 1 auto;
+    transition: 0.2s;
+    border-radius: 6px 6px 0 0;
+    text-transform: uppercase;
+}
+
+.tab-btn.active {
+    background: #ffd700;
+    color: #000;
+    font-weight: bold;
+    border-bottom-color: transparent;
+}
+
+.tab-content {
+    display: none;
+    background: #000000cc;
+    border: 3px solid #ffd700;
+    padding: 20px;
+    border-radius: 0 10px 10px 10px;
+    min-height: 400px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* ===== STYLES TAB (gallery) ===== */
+.style-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+}
+
+.style-card {
+    background: #111;
+    border: 2px solid #ffd700;
+    padding: 15px 10px;
+    border-radius: 8px;
+    text-align: center;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.style-card:hover {
     transform: scale(1.02);
+    box-shadow: 0 0 15px #ffd700;
+}
+
+.style-card.equipped {
+    border-color: #00ff00;
+    box-shadow: 0 0 10px #00ff00;
+}
+
+.style-card h3 {
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: #ffd700;
+    word-break: break-word;
+}
+
+.style-card p {
+    font-size: 9px;
+    margin: 5px 0;
+    color: #ccc;
+}
+
+.style-card button {
+    padding: 8px;
+    margin-top: 10px;
+    background: #ffd700;
+    border: none;
+    font-family: inherit;
+    font-size: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+}
+
+/* rarity colors */
+.rarity-uncommon { border-left: 6px solid #00aaff; }
+.rarity-rare { border-left: 6px solid #aa00ff; }
+.rarity-mythic { border-left: 6px solid #ffaa00; }
+.rarity-legendary { border-left: 6px solid #ff5500; }
+.rarity-shiny { border-left: 6px solid #ffffff; box-shadow: 0 0 10px #fff; }
+
+/* ===== GACHA TAB ===== */
+.gacha-machine {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.gacha-stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px 30px;
+    background: #222;
+    padding: 20px;
+    border: 2px solid #ffd700;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.gacha-stats span {
+    font-size: 12px;
+    padding: 5px 10px;
+    background: #000;
+    border-radius: 20px;
+}
+
+.gacha-stats span:nth-child(1) { color: #00aaff; }   /* UNCOMMON */
+.gacha-stats span:nth-child(2) { color: #aa00ff; }   /* RARE */
+.gacha-stats span:nth-child(3) { color: #ffaa00; }   /* MYTHIC */
+.gacha-stats span:nth-child(4) { color: #ff5500; }   /* LEGENDARY */
+.gacha-stats span:nth-child(5) { color: #ffffff; }   /* SHINY */
+
+.spin-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+#spin-btn {
+    padding: 20px 40px;
+    font-size: 24px;
+    background: #ffd700;
+    border: 3px solid #fff;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 50px;
+    box-shadow: 0 8px 0 #b8860b;
+    transition: 0.1s;
+}
+
+#spin-btn:active {
+    transform: translateY(8px);
+    box-shadow: none;
+}
+
+#spin-result {
+    min-height: 60px;
+    font-size: 14px;
+    text-align: center;
+    background: #222;
+    padding: 15px;
+    border-radius: 8px;
+    width: 100%;
+    border: 2px dashed #ffd700;
+}
+
+/* ===== VS TAB (fighting) ===== */
+#fight-canvas {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background: #000;
+    border: 4px solid #ffd700;
+    border-radius: 8px;
+    image-rendering: pixelated;
+}
+
+.fight-controls {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.fight-controls button {
+    padding: 18px 10px;
+    background: #ffd700;
+    border: 2px solid #fff;
+    font-family: 'Press Start 2P', cursive, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 4px 0 #b8860b;
+    transition: 0.1s;
+}
+
+.fight-controls button:active {
+    transform: translateY(4px);
+    box-shadow: none;
+}
+
+.fight-controls button:last-child {
+    grid-column: span 2;
+    background: #ff4444;
+    color: white;
+    box-shadow: 0 4px 0 #aa2222;
+}
+
+/* ===== QUESTS TAB ===== */
+#quest-list {
+    list-style: none;
+}
+
+#quest-list li {
+    background: #111;
+    border: 2px solid #ffd700;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 6px;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#quest-list li.completed {
+    opacity: 0.6;
+    border-color: #00ff00;
+}
+
+/* ===== ADMIN PANEL ===== */
+.admin-panel {
+    max-width: 1000px;
+    margin: 30px auto;
+    background: #111;
+    border: 4px solid #ffd700;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+.admin-panel h2 {
+    color: #ffd700;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+#admin-content {
+    background: #222;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+#admin-content ul {
+    list-style: none;
+}
+
+#admin-content li {
+    padding: 10px;
+    border-bottom: 1px solid #444;
+    display: flex;
+    justify-content: space-between;
+}
+
+#admin-content button {
+    background: #ffd700;
+    border: none;
+    padding: 5px 10px;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+#logout-admin {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #ff4444;
+    border: none;
+    color: white;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* ===== MOBILE LANDSCAPE (max-width: 900px, orientation: landscape) ===== */
+@media screen and (max-width: 900px) and (orientation: landscape) {
+    .game-container {
+        padding: 5px;
+    }
+
+    .player-header {
+        padding: 8px 12px;
+        font-size: 10px;
+    }
+
+    .tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        gap: 3px;
+    }
+
+    .tab-btn {
+        padding: 8px 12px;
+        font-size: 9px;
+        flex: 0 0 auto;
+    }
+
+    .tab-content {
+        padding: 10px;
+        min-height: auto;
+    }
+
+    .style-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 8px;
+    }
+
+    .style-card {
+        padding: 8px;
+    }
+
+    .style-card h3 {
+        font-size: 8px;
+    }
+
+    .style-card p {
+        font-size: 6px;
+    }
+
+    .gacha-stats {
+        padding: 10px;
+        gap: 8px;
+    }
+
+    .gacha-stats span {
+        font-size: 8px;
+        padding: 3px 6px;
+    }
+
+    #spin-btn {
+        padding: 12px 24px;
+        font-size: 16px;
+    }
+
+    .fight-controls {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .fight-controls button {
+        padding: 10px 5px;
+        font-size: 10px;
+    }
+
+    .fight-controls button:last-child {
+        grid-column: auto;
+    }
+}
+
+/* ===== MOBILE PORTRAIT (max-width: 600px) ===== */
+@media screen and (max-width: 600px) {
+    .auth-box {
+        padding: 20px 15px;
+    }
+
+    .pixel-title {
+        font-size: 18px;
+    }
+
+    .social-btn {
+        font-size: 11px;
+        padding: 14px 10px;
+    }
+
+    .email-form input,
+    .email-btn {
+        font-size: 12px;
+        padding: 14px;
+    }
+
+    .player-header {
+        font-size: 9px;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .tab-btn {
+        font-size: 9px;
+        padding: 8px 5px;
+    }
+
+    .gacha-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fight-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .fight-controls button {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    #quest-list li {
+        font-size: 8px;
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+/* ===== UTILITY CLASSES ===== */
+.hidden {
+    display: none !important;
+}
+
+.text-gold {
+    color: #ffd700;
+}
+
+.pixel-border {
+    border: 4px solid #ffd700;
+    box-shadow: 0 0 0 2px #000, 0 0 0 4px #ffd700;
+}
+
+/* ปรับ Scrollbar ให้ดูดี */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ffd700;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #b8860b;
 }
