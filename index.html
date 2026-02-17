@@ -2,25 +2,45 @@
 <html lang="th">
 <head>
     <meta charset="UTF-8">
-    <title>CPU Fighter - เข้าสู่ระบบ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>เจเจ หมาเด็ก (BETA)- เข้าสู่ระบบ</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/pixel.css">
+    <link rel="stylesheet" href="css/mobile.css">
 </head>
 <body class="pixel-bg">
-    <div class="login-container">
-        <h1 class="pixel-title">CPU FIGHTER</h1>
-        <form id="login-form">
-            <input type="email" id="email" placeholder="อีเมล" required>
-            <input type="password" id="password" placeholder="รหัสผ่าน" required>
-            <button type="submit">เข้าสู่ระบบ</button>
-        </form>
-        <form id="register-form">
-            <input type="text" id="reg-username" placeholder="ชื่อผู้ใช้" required>
-            <input type="email" id="reg-email" placeholder="อีเมล" required>
-            <input type="password" id="reg-password" placeholder="รหัสผ่าน" required>
-            <button type="submit">สมัครสมาชิก</button>
-        </form>
-        <div id="login-message"></div>
+    <div class="auth-container">
+        <div class="auth-box">
+            <h1 class="pixel-title">CPU FIGHTER</h1>
+            
+            <!-- ปุ่มสลับ Login/Register -->
+            <div class="auth-toggle">
+                <button id="show-login" class="toggle-btn active">เข้าสู่ระบบ</button>
+                <button id="show-register" class="toggle-btn">สมัครสมาชิก</button>
+            </div>
+
+            <!-- ฟอร์มเข้าสู่ระบบ -->
+            <div id="login-form-container" class="auth-form active">
+                <form id="login-form">
+                    <input type="email" id="email" placeholder="อีเมล" required>
+                    <input type="password" id="password" placeholder="รหัสผ่าน" required>
+                    <button type="submit">เข้าสู่ระบบ</button>
+                </form>
+            </div>
+
+            <!-- ฟอร์มสมัครสมาชิก -->
+            <div id="register-form-container" class="auth-form">
+                <form id="register-form">
+                    <input type="text" id="reg-username" placeholder="ชื่อผู้ใช้" required>
+                    <input type="email" id="reg-email" placeholder="อีเมล" required>
+                    <input type="password" id="reg-password" placeholder="รหัสผ่าน" required>
+                    <button type="submit">สมัครสมาชิก</button>
+                </form>
+            </div>
+
+            <!-- ข้อความแสดงผล ( error / success ) -->
+            <div id="auth-message" class="auth-message"></div>
+        </div>
     </div>
     <script type="module" src="js/main.js"></script>
 </body>
