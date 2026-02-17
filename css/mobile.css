@@ -1,0 +1,131 @@
+/* ปรับพื้นฐานสำหรับมือถือแนวนอน */
+@media screen and (max-width: 900px) and (orientation: landscape) {
+    body {
+        overflow: hidden;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+    }
+
+    .game-container {
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+    /* ส่วนหัวผู้ใช้ - ย่อขนาด */
+    .player-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 10px;
+        font-size: 12px;
+        background: rgba(0,0,0,0.8);
+        border: 2px solid #ffd700;
+        margin-bottom: 5px;
+    }
+
+    /* แท็บเมนู - เลื่อนแนวนอนได้ */
+    .tabs {
+        display: flex;
+        overflow-x: auto;
+        gap: 5px;
+        padding: 5px 0;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .tab-btn {
+        flex: 0 0 auto;
+        padding: 8px 15px;
+        font-size: 12px;
+        white-space: nowrap;
+    }
+
+    /* แท็บเนื้อหา */
+    .tab-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 10px;
+        background: rgba(0,0,0,0.7);
+        border: 2px solid #ffd700;
+    }
+
+    /* ปรับ Canvas สำหรับต่อสู้ */
+    #fight-canvas {
+        width: 100%;
+        height: auto;
+        max-height: 50vh;
+        object-fit: contain;
+        background: #000;
+        border: 2px solid #ffd700;
+    }
+
+    /* ปุ่มควบคุมการต่อสู้ */
+    .fight-controls {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+        margin-top: 10px;
+    }
+
+    .fight-controls button {
+        padding: 12px 5px;
+        font-size: 14px;
+        min-height: 50px;
+    }
+
+    /* ปุ่มกาชา */
+    .spin-controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #spin-btn {
+        flex: 1;
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    /* กริดแสดงสไตล์ */
+    .style-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 8px;
+    }
+
+    .style-card {
+        padding: 8px;
+        font-size: 11px;
+    }
+
+    .style-card h3 {
+        font-size: 13px;
+        margin: 0 0 5px 0;
+    }
+
+    .style-card button {
+        padding: 6px;
+        font-size: 11px;
+    }
+
+    /* ซ่อนแถบเลื่อนแต่ยังเลื่อนได้ */
+    .tab-content::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .tab-content::-webkit-scrollbar-thumb {
+        background: #ffd700;
+    }
+}
+
+/* เพิ่มการซัพพอร์ต iPhone ที่มีรอยบาก */
+@supports (padding: max(0px)) {
+    .game-container {
+        padding-left: max(5px, env(safe-area-inset-left));
+        padding-right: max(5px, env(safe-area-inset-right));
+        padding-bottom: max(5px, env(safe-area-inset-bottom));
+    }
+}
