@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>CPU Fighter - เกม</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/pixel.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- ส่วนหัวแสดงข้อมูลผู้เล่น -->
+        <div class="player-header">
+            <span id="player-name"></span>
+            <span>💰 <span id="bobux">0</span></span>
+            <span>🎰 สปิน: <span id="spins">3</span></span>
+        </div>
+
+        <!-- แท็บเมนู -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="styles">สไตล์ของฉัน</button>
+            <button class="tab-btn" data-tab="gacha">กาชา</button>
+            <button class="tab-btn" data-tab="vs">VS</button>
+            <button class="tab-btn" data-tab="quests">เควส</button>
+        </div>
+
+        <!-- ส่วนแสดงสไตล์ (ตามภาพ IMG_4238) -->
+        <div id="styles-tab" class="tab-content active">
+            <div class="style-grid" id="style-list"></div>
+        </div>
+
+        <!-- ส่วนกาชา -->
+        <div id="gacha-tab" class="tab-content">
+            <div class="gacha-machine">
+                <div class="gacha-stats">
+                    <span>🟦 UNCOMMON (63%)</span>
+                    <span>🟩 RARE (27%)</span>
+                    <span>🟪 MYTHIC (9%)</span>
+                    <span>🟧 LEGENDARY (1%)</span>
+                    <span>✨ SHINY (0.015%)</span>
+                </div>
+                <div class="spin-controls">
+                    <span>สปินคงเหลือ: <span id="spins-count">3</span></span>
+                    <span>Pity: <span id="pity-count">0/100</span></span>
+                    <button id="spin-btn">🎲 หมุน!</button>
+                </div>
+                <div id="spin-result"></div>
+            </div>
+        </div>
+
+        <!-- ส่วน VS (ต่อสู้) -->
+        <div id="vs-tab" class="tab-content">
+            <canvas id="fight-canvas" width="800" height="400"></canvas>
+            <div class="fight-controls">
+                <button id="attack-light">👊 หมัดเบา</button>
+                <button id="attack-heavy">💥 หมัดหนัก</button>
+                <button id="domain-expand">🌐 กางอาณาเขต</button>
+                <button id="find-match">🔍 หาเพื่อนต่อสู้</button>
+            </div>
+        </div>
+
+        <!-- ส่วนเควส -->
+        <div id="quests-tab" class="tab-content">
+            <ul id="quest-list"></ul>
+        </div>
+    </div>
+
+    <script type="module" src="js/game.js"></script>
+</body>
+</html>
