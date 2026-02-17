@@ -3,45 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>เจเจ หมาเด็ก (BETA)- เข้าสู่ระบบ</title>
+    <title>CPU Fighter - ล็อกอิน</title>
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/pixel.css">
+    <link rel="stylesheet" href="css/pixel.css"> <!-- ถ้ามี -->
     <link rel="stylesheet" href="css/mobile.css">
+    <!-- Firebase SDK (ใช้แบบ modular หรือ global ก็ได้ ที่นี่ใช้ global เพื่อความง่าย) -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js"></script>
 </head>
 <body class="pixel-bg">
     <div class="auth-container">
         <div class="auth-box">
             <h1 class="pixel-title">CPU FIGHTER</h1>
-            
-            <!-- ปุ่มสลับ Login/Register -->
-            <div class="auth-toggle">
-                <button id="show-login" class="toggle-btn active">เข้าสู่ระบบ</button>
-                <button id="show-register" class="toggle-btn">สมัครสมาชิก</button>
+            <p class="auth-subtitle">ล็อกอินหรือลงทะเบียน</p>
+
+            <!-- ปุ่ม Social Login -->
+            <button id="google-login" class="social-btn google">
+                <img src="assets/icons/google.svg" alt="Google"> ดำเนินการต่อโดยใช้ Google
+            </button>
+            <button id="apple-login" class="social-btn apple">
+                <img src="assets/icons/apple.svg" alt="Apple"> ดำเนินการต่อด้วย Apple
+            </button>
+
+            <div class="divider">หรือ</div>
+
+            <!-- ฟอร์มอีเมล (เริ่มซ่อนไว้) -->
+            <div id="email-form" class="email-form">
+                <input type="email" id="email" placeholder="อีเมล" required>
+                <input type="password" id="password" placeholder="รหัสผ่าน" required>
+                <button id="email-submit" class="email-btn">ดำเนินการต่อ</button>
             </div>
 
-            <!-- ฟอร์มเข้าสู่ระบบ -->
-            <div id="login-form-container" class="auth-form active">
-                <form id="login-form">
-                    <input type="email" id="email" placeholder="อีเมล" required>
-                    <input type="password" id="password" placeholder="รหัสผ่าน" required>
-                    <button type="submit">เข้าสู่ระบบ</button>
-                </form>
-            </div>
+            <!-- ปุ่มแสดงฟอร์มอีเมล (ถ้าซ่อนไว้) -->
+            <button id="show-email" class="text-btn">ใช้อีเมล</button>
 
-            <!-- ฟอร์มสมัครสมาชิก -->
-            <div id="register-form-container" class="auth-form">
-                <form id="register-form">
-                    <input type="text" id="reg-username" placeholder="ชื่อผู้ใช้" required>
-                    <input type="email" id="reg-email" placeholder="อีเมล" required>
-                    <input type="password" id="reg-password" placeholder="รหัสผ่าน" required>
-                    <button type="submit">สมัครสมาชิก</button>
-                </form>
-            </div>
-
-            <!-- ข้อความแสดงผล ( error / success ) -->
+            <!-- ข้อความแสดงผล -->
             <div id="auth-message" class="auth-message"></div>
+
+            <!-- Loading Spinner -->
+            <div id="loading" class="loading-spinner" style="display: none;"></div>
         </div>
     </div>
-    <script type="module" src="js/main.js"></script>
+
+    <!-- Firebase Config (ต้องเปลี่ยนเป็นของโปรเจกต์คุณ) -->
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDJ4ILoZnzgXORGfII6Iyd-ORxHu4-j2QE",
+            authDomain: "newqwe-5b6f7.firebaseapp.com",
+            databaseURL: "https://newqwe-5b6f7-default-rtdb.firebaseio.com",
+            projectId: "newqwe-5b6f7",
+            storageBucket: "newqwe-5b6f7.firebasestorage.app",
+            messagingSenderId: "11942471734",
+            appId: "1:11942471734:web:44747434a2551c2c995097",
+            measurementId: "G-ZLDHN2LVS8"
+        };
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.database();
+    </script>
+    <!-- main.js สำหรับจัดการ events -->
+    <script src="js/main.js"></script>
 </body>
 </html>
