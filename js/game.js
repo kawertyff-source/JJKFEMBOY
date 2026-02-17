@@ -119,3 +119,28 @@ function setupQuests() {
     });
   });
 }
+// เพิ่มฟังก์ชันปรับขนาด Canvas ตามหน้าจอ
+function resizeCanvas() {
+    const canvas = document.getElementById('fight-canvas');
+    const container = canvas.parentElement;
+    const containerWidth = container.clientWidth;
+    
+    // คงอัตราส่วน 2:1 (800x400)
+    canvas.width = Math.min(800, containerWidth);
+    canvas.height = canvas.width / 2;
+    
+    // วาดใหม่ถ้ามีข้อมูลการต่อสู้
+    if (window.currentCombat) {
+        drawFight(canvas.getContext('2d'), window.currentCombat);
+    }
+}
+
+// เรียกเมื่อโหลดหน้าและเมื่อหมุนจอ
+window.addEventListener('load', resizeCanvas);
+window.addEventListener('resize', resizeCanvas);
+
+// ตรวจจับการหมุนจอบนมือถือ
+screen.orientation?.addEventListener('change', resizeCanvas);
+ });
+  });
+}
